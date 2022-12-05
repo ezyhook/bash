@@ -67,7 +67,7 @@ tar xvf lighthouse-v3.3.0-x86_64-unknown-linux-gnu-portable.tar.gz
 sudo cp lighthouse /usr/local/bin
 
 sudo apt install -y git gcc g++ make cmake pkg-config llvm-dev libclang-dev clang
-curl https://sh.rustup.rs -sSf | sh
+curl https://sh.rustup.rs -sSf | bash -s - -y
 source $HOME/.cargo/env
 sudo tee /etc/systemd/system/lighthouse.service > /dev/null <<EOF
 [Unit]
