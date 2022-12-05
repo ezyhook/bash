@@ -114,7 +114,6 @@ ExecStart=/root/.local/share/solana/install/active_release/bin/solana-validator 
 --maximum-local-snapshot-age 3000 \\
 --snapshot-interval-slots 1000 \\
 --dynamic-port-range 8000-8020 \\
-#--expected-shred-version 24371 \\
 #--accounts /mnt/solana-accounts/acc \\
 #--gossip-port 8001 \\
 --only-known-rpc \\
@@ -154,19 +153,6 @@ makeramdisk(){
   mount /mnt/solana-accounts/
   sed -i '/accounts/s/^#//' /etc/systemd/system/solana.service
   systemctl daemon-reload
-}
-myotions(){
-  apt install bc sysstat -y
-  #mkdir kerak
-  #curl -A 'Hi' -o /root/kerak/kerak_edition3.sh https://wdmaster.ru/bash/kerak_edition3.sh
-  #curl -A 'Hi' -o /root/kerak/kerak_edition_hardinfo.sh https://wdmaster.ru/bash/kerak_edition_hardinfo.sh
-  #chmod +x /root/kerak/kerak_edition3.sh /root/kerak/kerak_edition_hardinfo.sh
-  #cp /root/kerak/checknode /etc/cron.d
-  #curl -s -A 'Hi' -o /etc/cron.d/checknode https://wdmaster.ru/bash/checknode1
-  apt autoremove --purge snapd -y
-  curl -s -A 'Hi' -o /etc/cron.d/checknode https://wdmaster.ru/bash/checknode
-  #bash <(curl -s -A 'Hi' https://wdmaster.ru/bash/ssh_wireguard.sh)
-  bash <(curl -fsSL https://raw.githubusercontent.com/mfactory-lab/sv-manager/latest/install/install_monitoring.sh)
 }
 restartsol(){
 	systemctl restart solana-sys-tuner.service && systemctl restart solana
@@ -218,7 +204,6 @@ while true; do
     esac
 done
 
-#myotions
 echo -e "\e[1m\e[32m Lets start... \e[0m" && sleep 1
 #Docker
 echo -e "\e[1m\e[32m Check and installing Docker... \e[0m" && sleep 1
