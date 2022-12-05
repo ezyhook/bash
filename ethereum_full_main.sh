@@ -63,9 +63,7 @@ sudo systemctl start erigon.service
 makelighthouse() {
 cd $HOME
 curl -LO https://github.com/sigp/lighthouse/releases/download/v3.3.0/lighthouse-v3.3.0-x86_64-unknown-linux-gnu-portable.tar.gz
-tar xvf lighthouse-v3.3.0-x86_64-unknown-linux-gnu-portable.tar.gz
-sudo cp lighthouse /usr/local/bin
-
+tar -C /usr/local/bin -xvf lighthouse-v3.3.0-x86_64-unknown-linux-gnu-portable.tar.gz
 sudo apt install -y git gcc g++ make cmake pkg-config llvm-dev libclang-dev clang
 curl https://sh.rustup.rs -sSf | bash -s - -y
 source $HOME/.cargo/env
