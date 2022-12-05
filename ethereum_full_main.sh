@@ -97,6 +97,6 @@ echo -e "\e[1m\e[32m Installing erigon & lighthouse, plz wait.... \e[0m"
 makejwtsecret &> /dev/null
 makeerigon &> /dev/null && echo -e "\e[1m\e[32m 1.Erigon installed. \e[0m" || echo -e "\e[1m\e[31m Error install erigon. \e[0m"
 makelighthouse &> /dev/null && echo -e "\e[1m\e[32m 2.Lighthouse installed. \e[0m" || echo -e "\e[1m\e[31m Error install lighthouse. \e[0m"
-echo "Try:"
+echo "Check:"
 echo "journalctl -u erigon -f --no-hostname"
 echo "journalctl -u lighthouse -f --no-hostname"
