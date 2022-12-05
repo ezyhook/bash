@@ -94,7 +94,7 @@ sudo systemctl enable lighthouse
 sudo systemctl start lighthouse
 }
 
-offsubnet &> /dev/null && echo -e "\e[1m\e[32m Subnet droped. \e[0m" || echo -e "\e[1m\e[31m Error subnet drop. \e[0m"
+offsubnet && echo -e "\e[1m\e[32m Subnet droped. \e[0m" || echo -e "\e[1m\e[31m Error subnet drop. \e[0m"
 makejwtsecret &> /dev/null
 makeerigon &> /dev/null && echo -e "\e[1m\e[32m Erigon installed. \e[0m" || echo -e "\e[1m\e[31m Error install erigon. \e[0m"
 makelighthouse &> /dev/null && echo -e "\e[1m\e[32m Lighthouse installed. \e[0m" || echo -e "\e[1m\e[31m Error install lighthouse. \e[0m"
