@@ -95,5 +95,5 @@ sudo systemctl start lighthouse
 offsubnet && echo -e "\e[1m\e[32m Subnet droped. \e[0m" || echo -e "\e[1m\e[31m Error subnet drop. \e[0m"
 echo -e "\e[1m\e[32m Installing erigon & lighthouse, plz wait.... \e[0m"
 makejwtsecret &> /dev/null
-makeerigon &> /dev/null && echo -e "\e[1m\e[32m Erigon installed. \e[0m" || echo -e "\e[1m\e[31m Error install erigon. \e[0m"
-makelighthouse &> /dev/null && echo -e "\e[1m\e[32m Lighthouse installed. \e[0m" || echo -e "\e[1m\e[31m Error install lighthouse. \e[0m"
+makeerigon &> /dev/null && echo -e "\e[1m\e[32m 1.Erigon installed. \e[0m" || echo -e "\e[1m\e[31m Error install erigon. \e[0m"
+makelighthouse &> /dev/null && echo -e "\e[1m\e[32m 2.Lighthouse installed. \e[0m" || echo -e "\e[1m\e[31m Error install lighthouse. \e[0m"
