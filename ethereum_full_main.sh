@@ -1,7 +1,7 @@
 offsubnet() {
 sudo apt-get update
 sudo apt-get install curl iptables-persistent -y
-curl -sL https://gist.githubusercontent.com/ama31337/31ad70aa91aaa54aface856a19821f43/raw/5044424e16fa4abef868e2896a0645b25614acb5/hetz-private-ips.sh | sudo bash
+curl -sL https://gist.githubusercontent.com/Bambarello/3e0fb5f4605d4fbc28b154925dc989a1/raw/reserved.sh | sudo bash
 sudo apt-get install netfilter-persistent -y
 iptables-save > /etc/iptables/rules.v4
 ip6tables-save > /etc/iptables/rules.v6
