@@ -7,7 +7,7 @@ HOST_NAME="$3"
 INFO_ALARM1="Critical Parametr!"
 IP="$(curl -s ifconfig.me)"
 
-MAX_CPU_PERC=98
+MAX_CPU_PERC=95
 MAX_DISK_PERC=95
 MAX_RAM_PERC=95
 MAX_SWAP_PERC=95
