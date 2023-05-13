@@ -12,7 +12,7 @@ MAX_DISK_PERC=95
 MAX_RAM_PERC=95
 MAX_SWAP_PERC=95
 MAX_RAMDISK_PERC=95
-MON_PROC="xmrig kdevtmpfsi kinsing dbused cpu-x"
+MON_PROC="xmrig kdevtmpfsi kinsing dbused"
 
 export LC_NUMERIC="en_US.UTF-8"
 CPU=$(bc <<< "scale=2; 100-$(mpstat | tail -1 | awk 'NF {print $NF}')")
