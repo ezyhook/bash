@@ -64,7 +64,7 @@ killminers(){
 
 if (( $(bc <<< "$RAM_PERC >= $MAX_RAM_PERC") )) || (( $(bc <<< "$SWAP_PERC >= $MAX_SWAP_PERC") )) || (( $(bc <<< "$CPU >= $MAX_CPU_PERC") )) || (( $(bc <<< "${DISK_PERC::-1} >= $MAX_DISK_PERC") ))
 then
-curl --header 'Content-Type: application/json' --request 'POST' --data '{"chat_id":"'"$CHAT_ID_ALARM"'","text":"<b>'🔴"$HOST_NAME":"$INFO_ALARM1"'</b>'"\n[$IP]"'<code>
+curl --header 'Content-Type: application/json' --request 'POST' --data '{"chat_id":"'"$CHAT_ID_ALARM"'","text":"<b>'🔴"$HOST_NAME": "$INFO_ALARM1"'</b>'"\n[$IP]"'<code>
 CPU  >>> ['"$CPU"']
 RAM  >>> ['"$USED_RAM"']
 Disk >>> ['"$USED_DISK"']
@@ -73,7 +73,7 @@ fi
 
 if lookmainer $MON_PROC
 then
-curl --header 'Content-Type: application/json' --request 'POST' --data '{"chat_id":"'"$CHAT_ID_ALARM"'","text":"<b>'🔴"$HOST_NAME":"$INFO_ALARM1"'</b>'"\n[$IP]"'<code>
+curl --header 'Content-Type: application/json' --request 'POST' --data '{"chat_id":"'"$CHAT_ID_ALARM"'","text":"<b>'🔴"$HOST_NAME": "$INFO_ALARM1"'</b>'"\n[$IP]"'<code>
 🔴 Killed '"${#arr_proc[@]}"' miners: '"${arr_proc[@]}"'</code>","parse_mode": "html"}' "https://api.telegram.org/bot$BOT_TOKEN/sendMessage"
 killminers "${arr_proc[@]}"
 fi
