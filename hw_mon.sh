@@ -87,5 +87,5 @@ Ram  >> ['"$USED_RAM"']
 Swap >> ['"$USED_SWAP"'] 
 Disk >> ['"$USED_DISK"']</code>",  "parse_mode": "html"}' "https://api.telegram.org/bot$BOT_TOKEN/sendMessage"
 fi
-
+echo "ok."
 #set +x
