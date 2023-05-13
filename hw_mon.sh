@@ -78,8 +78,8 @@ curl --header 'Content-Type: application/json' --request 'POST' --data '{"chat_i
 killminers "${arr_proc[@]}"
 fi
 
-if (( $(echo "$(date +%M) < 5" | bc -l) ))
-then
+#if (( $(echo "$(date +%M) < 5" | bc -l) ))
+#then
 echo "Все ок."
 curl --header 'Content-Type: application/json' --request 'POST' --data '{"chat_id":"'"$CHAT_ID_HARDINFO"'","text":"<b>'🟢"$HOST_NAME"'</b>'"\n[$IP]"'<code>
 Used_CPU >> ['"$CPU"']
@@ -87,6 +87,6 @@ Proc_LA  >> ['"$SYSTEM_LOAD"'] max:'"$POTOK_LOAD"'
 Ram  >> ['"$USED_RAM"'] 
 Swap >> ['"$USED_SWAP"'] 
 Disk >> ['"$USED_DISK"']</code>",  "parse_mode": "html"}' "https://api.telegram.org/bot$BOT_TOKEN/sendMessage"
-fi
+#fi
 
 #set +x
