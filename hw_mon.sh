@@ -81,6 +81,7 @@ fi
 
 if (( $(echo "$(date +%M) < 5" | bc -l) ))
 then
+echo "Все ок"
 curl --header 'Content-Type: application/json' --request 'POST' --data '{"chat_id":"'"$CHAT_ID_HARDINFO"'","text":"<b>'🟢"$HOST_NAME"'</b>'"\n[$IP]"'<code>
 Used_CPU >> ['"$CPU"']
 Proc_LA  >> ['"$SYSTEM_LOAD"'] max:'"$POTOK_LOAD"'
