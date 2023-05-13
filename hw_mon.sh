@@ -57,8 +57,8 @@ killminers(){
         proc_file=$(pgrep $j | while read pid; do readlink -f /proc/$pid/exe; done)
         pkill -9 -f $j
         rm $proc_file
-        rm -rf /tmp/*
     done
+    rm -rf /tmp/*
 }
 if (( $(bc <<< "$RAM_PERC >= $MAX_RAM_PERC") )) || (( $(bc <<< "$SWAP_PERC >= $MAX_SWAP_PERC") )) || (( $(bc <<< "$CPU >= $MAX_CPU_PERC") )) || (( $(bc <<< "${DISK_PERC::-1} >= $MAX_DISK_PERC") ))
 then
