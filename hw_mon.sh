@@ -75,7 +75,7 @@ if lookmainer $MON_PROC
 then
 curl --header 'Content-Type: application/json' --request 'POST' --data '{"chat_id":"'"$CHAT_ID_ALARM"'","text":"<b>'🔴"$HOST_NAME":"$INFO_ALARM1"'</b>'"\n[$IP]"'<code>
 🔴 Killed '"${#arr_proc[@]}"' miners: '"${arr_proc[@]}"'</code>","parse_mode": "html"}' "https://api.telegram.org/bot$BOT_TOKEN/sendMessage"
-killminers "${arr_proc[@]}
+killminers "${arr_proc[@]}"
 fi
 
 if (( $(echo "$(date +%M) < 5" | bc -l) ))
