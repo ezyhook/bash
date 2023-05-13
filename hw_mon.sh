@@ -1,4 +1,4 @@
-set -x
+#set -x
 
 BOT_TOKEN="$1"
 CHAT_ID_ALARM="$2"
@@ -89,4 +89,4 @@ Swap >> ['"$USED_SWAP"']
 Disk >> ['"$USED_DISK"']</code>",  "parse_mode": "html"}' "https://api.telegram.org/bot$BOT_TOKEN/sendMessage"
 fi
 
-set +x
+#set +x
