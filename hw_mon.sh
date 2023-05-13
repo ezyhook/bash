@@ -7,7 +7,7 @@ HOST_NAME="$3"
 INFO_ALARM1="Critical Parametr!"
 IP="$(curl -s ifconfig.me)"
 
-MAX_CPU_PERC=95
+MAX_CPU_PERC=98
 MAX_DISK_PERC=95
 MAX_RAM_PERC=95
 MAX_SWAP_PERC=95
@@ -56,32 +56,30 @@ killminers(){
       do
         proc_file=$(pgrep $j | while read pid; do readlink -f /proc/$pid/exe; done)
         pkill -9 -f $j
-        rm $proc_file
+        rm "$proc_file"
     done
     rm -rf /tmp/*
 }
+
+
 if (( $(bc <<< "$RAM_PERC >= $MAX_RAM_PERC") )) || (( $(bc <<< "$SWAP_PERC >= $MAX_SWAP_PERC") )) || (( $(bc <<< "$CPU >= $MAX_CPU_PERC") )) || (( $(bc <<< "${DISK_PERC::-1} >= $MAX_DISK_PERC") ))
 then
-if lookmainer $MON_PROC; then
-curl --header 'Content-Type: application/json' --request 'POST' --data '{"chat_id":"'"$CHAT_ID_ALARM"'","text":"<b>'🔴"$HOST_NAME":"$INFO_ALARM1"'</b>'"\n[$IP]"'<code>
-CPU  >>> ['"$CPU"']
-RAM  >>> ['"$USED_RAM"']
-Disk >>> ['"$USED_DISK"']
-SWAP >>> ['"$USED_SWAP"']
-🔴 Killed '"${#arr_proc[@]}"' miners: '"${arr_proc[@]}"'</code>","parse_mode": "html"}' "https://api.telegram.org/bot$BOT_TOKEN/sendMessage"
-killminers ${arr_proc[@]}
-else
 curl --header 'Content-Type: application/json' --request 'POST' --data '{"chat_id":"'"$CHAT_ID_ALARM"'","text":"<b>'🔴"$HOST_NAME":"$INFO_ALARM1"'</b>'"\n[$IP]"'<code>
 CPU  >>> ['"$CPU"']
 RAM  >>> ['"$USED_RAM"']
 Disk >>> ['"$USED_DISK"']
 SWAP >>> ['"$USED_SWAP"']</code>","parse_mode": "html"}' "https://api.telegram.org/bot$BOT_TOKEN/sendMessage"
 fi
+
+if lookmainer $MON_PROC
+then
+curl --header 'Content-Type: application/json' --request 'POST' --data '{"chat_id":"'"$CHAT_ID_ALARM"'","text":"<b>'🔴"$HOST_NAME":"$INFO_ALARM1"'</b>'"\n[$IP]"'<code>
+🔴 Killed '"${#arr_proc[@]}"' miners: '"${arr_proc[@]}"'</code>","parse_mode": "html"}' "https://api.telegram.org/bot$BOT_TOKEN/sendMessage"
+killminers "${arr_proc[@]}
 fi
 
 if (( $(echo "$(date +%M) < 5" | bc -l) ))
 then
-echo "Все ок"
 curl --header 'Content-Type: application/json' --request 'POST' --data '{"chat_id":"'"$CHAT_ID_HARDINFO"'","text":"<b>'🟢"$HOST_NAME"'</b>'"\n[$IP]"'<code>
 Used_CPU >> ['"$CPU"']
 Proc_LA  >> ['"$SYSTEM_LOAD"'] max:'"$POTOK_LOAD"'
