@@ -15,7 +15,7 @@ MAX_RAMDISK_PERC=95
 MON_PROC="xmrig kdevtmpfsi kinsing dbused"
 
 export LC_NUMERIC="en_US.UTF-8"
-CPU=$(awk '{u=$2+$4; t=$2+$4+$5; if (NR==1){u1=u; t1=t;} else print ($2+$4-u1) * 100 / (t-t1) "%"; }' <(grep 'cpu ' /proc/stat) <(sleep 1;grep 'cpu ' /proc/stat))
+CPU=$(grep 'cpu ' /proc/stat | awk '{usage=($2+$4)*100/($2+$4+$5)} END {print usage}')
 SYSTEM_LOAD=$(cat /proc/loadavg | awk '{print $2}') # load avg за 5 мин.
 POTOK_LOAD=$(grep processor /proc/cpuinfo | wc -l)
 
