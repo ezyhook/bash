@@ -5,7 +5,8 @@ CHAT_ID_ALARM="$2"
 CHAT_ID_HARDINFO="$2"
 HOST_NAME="$3"
 INFO_ALARM1="Critical Parametr!"
-IP="$(curl -s ifconfig.me)"
+#IP="$(curl -s ifconfig.me)"
+IP=$(ip route get 8.8.8.8 | sed -n '/src/{s/.*src *\([^ ]*\).*/\1/p;q}')
 
 MAX_CPU_PERC=98
 MAX_DISK_PERC=95
