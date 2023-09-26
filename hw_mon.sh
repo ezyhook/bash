@@ -8,11 +8,11 @@ INFO_ALARM1="Critical Parametr!"
 #IP="$(curl -s ifconfig.me)"
 IP=$(ip route get 8.8.8.8 | sed -n '/src/{s/.*src *\([^ ]*\).*/\1/p;q}')
 
-MAX_CPU_PERC=98
-MAX_DISK_PERC=95
-MAX_RAM_PERC=95
-MAX_SWAP_PERC=95
-MAX_RAMDISK_PERC=95
+MAX_CPU_PERC=99
+MAX_DISK_PERC=98
+MAX_RAM_PERC=98
+MAX_SWAP_PERC=98
+MAX_RAMDISK_PERC=98
 MON_PROC="xmrig kdevtmpfsi kinsing dbused"
 
 export LC_NUMERIC="en_US.UTF-8"
