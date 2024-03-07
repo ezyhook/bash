@@ -1,6 +1,7 @@
 #/bin/bash
 babway="$HOME/go/bin"
 invento="$HOME/faucet/babnodes.txt"
+target="$1"
 while read line 
     do
         name="$(echo "$line" | cut -d ' ' -f1)"
@@ -15,6 +16,6 @@ sleep 10000
 while read line1
     do
         wallet1="$(echo "$line1" | cut -d ' ' -f3)"
-        "$babway"/babylond tx bank send "$wallet1" "$1" 99990ubbn --fee-payer "$wallet1" --node https://rpc.testnet3.babylonchain.io:443 --fees 10ubbn -y
+        "$babway"/babylond tx bank send "$wallet1" "$target" 99990ubbn --fee-payer "$wallet1" --node https://rpc.testnet3.babylonchain.io:443 --fees 10ubbn -y
         sleep 1
     done < "$invento"
