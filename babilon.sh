@@ -1,6 +1,6 @@
 #/bin/bash
 
-invento="babnodes.txt"
+invento="$HOME/faucet/babnodes.txt"
 IFS=' '
 while read line 
     do
