@@ -1,7 +1,7 @@
 #/bin/bash
-keys="keys.txt"
-nodes="nodes.txt"
-invento="babnodes.txt"
+keys="$HOME/faucet/keys.txt"
+nodes="$HOME/faucet/nodes.txt"
+invento="$HOME/faucet/babnodes.txt"
 babway="$HOME/go/bin"
 
 while read l
