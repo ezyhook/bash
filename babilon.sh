@@ -11,7 +11,7 @@ while read line
         sleep 1
     done < "$invento"
 
-sleep 900
+sleep 1200
 
 while read line1
     do
