@@ -11,7 +11,7 @@ while read line
         sleep 1
     done < "$invento"
 
-sleep 1200
+sleep echo $((1 + $RANDOM % 7))
 
 while read line1
     do
