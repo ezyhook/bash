@@ -17,5 +17,5 @@ while read line1
     do
         wallet1="$(echo "$line1" | cut -d ' ' -f3)"
         "$babway"/babylond tx bank send "$wallet1" "$target" 99990ubbn --fee-payer "$wallet1" --node https://rpc.testnet3.babylonchain.io:443 --fees 10ubbn -y
-        sleep $((2 + $RANDOM % 8))
+        sleep 1
     done < "$invento"
