@@ -7,7 +7,7 @@ babway="$HOME/go/bin"
 while read l
     do
         l1="$(echo "$l" | cut -d ':' -f1)"
-        l2="$(echo "$l" | cut -d ':' -f5)"
+        l2="$(echo "$l" | cut -d ':' -f$1)"
         echo "$l1 $l2" >> "$invento"
     done < "$nodes"
 
