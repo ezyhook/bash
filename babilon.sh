@@ -4,6 +4,7 @@ invento="$HOME/faucet/babnodes.txt"
 target="$1"
 while read line 
     do
+        [[ -z "$line" ]] && break
         name="$(echo "$line" | cut -d ' ' -f1)"
         TOKEN="$(echo "$line" | cut -d ' ' -f2)"
         wallet="$(echo "$line" | cut -d ' ' -f3)"
@@ -15,6 +16,7 @@ sleep 1200
 
 while read line1
     do
+        [[ -z "$line1" ]] && break
         wallet1="$(echo "$line1" | cut -d ' ' -f3)"
         "$babway"/babylond tx bank send "$wallet1" "$target" 99990ubbn --fee-payer "$wallet1" --node https://babylon-testnet-rpc.polkachu.com:443 --fees 10ubbn -y
         sleep 1
