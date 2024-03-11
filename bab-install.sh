@@ -7,6 +7,7 @@ echo "export PATH=$PATH:/usr/local/go/bin" >> $HOME/.bashrc;
 echo "export PATH=$PATH:/usr/local/go/bin" >> $HOME/.bash_profile; }
 git clone https://github.com/babylonchain/babylon.git
 cd babylon
+git checkout v0.8.3
 . $HOME/.bash_profile
 make install
 ~/go/bin/babylond init NODENAME --chain-id bbn-test-3
