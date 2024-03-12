@@ -20,6 +20,7 @@ then
             sleep 1
         done < "$invento"
         end_time=$(date +%s)
-        sleep $(( 21700 - ($end_time - $start_time) ))
+        proc_time=$(($end_time - $start_time))
+        sleep $((21700 - $proc_time))
     fi
 fi
