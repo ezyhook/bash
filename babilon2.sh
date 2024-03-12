@@ -8,15 +8,18 @@ then
     bal=$(echo "$test" | jq .amount | tr -d \");
     if [[ "$bal" -gt 200000 ]]
     then
+        start_time=$(date +%s)
         while read line
         do
             [[ -z "$line" ]] && break
+            name="$(echo "$line" | cut -d ' ' -f1)"
             TOKEN="$(echo "$line" | cut -d ' ' -f2)"
             wallet="$(echo "$line" | cut -d ' ' -f3)"
             date --utc -d "+3 hours"
             curl  https://discord.com/api/v10/channels/1075371070493831259/messages -X POST -H "Content-Type: application/json" -H "Authorization: $TOKEN" -d '{"content": "!faucet '"$wallet"'"}'
             sleep 1
         done < "$invento"
-        sleep 21700
+        end_time=$(date +%s)
+        sleep $(( 21700 - ($end_time - $start_time) ))
     fi
 fi
