@@ -6,7 +6,7 @@ test=$(~/go/bin/babylond q bank balances bbn15r3s8knp272jzfq004e0hyae0qj8p595x0m
 if [[ -n "$test" ]]
 then
     bal=$(echo "$test" | jq .amount | tr -d \");
-    if [[ "$bal" -gt 2 ]]
+    if [[ "$bal" -gt 200000 ]]
     then
         while read line
         do
