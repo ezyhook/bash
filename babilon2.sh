@@ -11,7 +11,6 @@ then
         while read line
         do
             [[ -z "$line" ]] && break
-            name="$(echo "$line" | cut -d ' ' -f1)"
             TOKEN="$(echo "$line" | cut -d ' ' -f2)"
             wallet="$(echo "$line" | cut -d ' ' -f3)"
             date --utc -d "+3 hours"
