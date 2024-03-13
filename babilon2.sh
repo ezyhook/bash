@@ -6,7 +6,7 @@ test=$(~/go/bin/babylond q bank balances bbn15r3s8knp272jzfq004e0hyae0qj8p595x0m
 if [[ -n "$test" ]]
 then
     bal=$(echo "$test" | jq .amount | tr -d \");
-    if [[ "$bal" -gt 200000 ]]
+    if [[ "$bal" -gt 100000 ]]
     then
         start_time=$(date +%s)
         while read line
