@@ -17,10 +17,10 @@ then
             wallet="$(echo "$line" | cut -d ' ' -f3)"
             date --utc -d "+3 hours"
             curl  https://discord.com/api/v10/channels/1075371070493831259/messages -X POST -H "Content-Type: application/json" -H "Authorization: $TOKEN" -d '{"content": "!faucet '"$wallet"'"}'
-            sleep 1
+            sleep 4
         done < "$invento"
         end_time=$(date +%s)
         proc_time=$(($end_time - $start_time))
-        sleep $((21660 - $proc_time))
+        sleep $((21700 - $proc_time))
     fi
 fi
