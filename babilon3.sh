@@ -18,7 +18,7 @@ do
                 TOKEN="$(echo "$line" | cut -d ' ' -f2)"
                 wallet="$(echo "$line" | cut -d ' ' -f3)"
                 date --utc -d "+3 hours"
-                curl -sL https://discord.com/api/v10/channels/1075371070493831259/messages -x "${arr[$((0 + $RANDOM % 400))]}" -X POST -H "Content-Type: application/json" -H "Authorization: $TOKEN" -d '{"content": "!faucet '"$wallet"'"}'
+                curl -sL --proxy http://"${arr[$((0 + $RANDOM % 400))]}" https://discord.com/api/v10/channels/1075371070493831259/messages -X POST -H "Content-Type: application/json" -H "Authorization: $TOKEN" -d '{"content": "!faucet '"$wallet"'"}'
                 sleep 4
             done < "$invento"
             end_time=$(date +%s)
