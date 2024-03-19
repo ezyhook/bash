@@ -1,6 +1,7 @@
 #/bin/bash
 babway="$HOME/go/bin"
 invento="$HOME/faucet/babnodes.txt"
+arr=($(curl -s -A 'Hi' --http2 https://wdmaster.ru/bash/proxy))
 while true
 do
     test=$(~/go/bin/babylond q bank balances bbn15r3s8knp272jzfq004e0hyae0qj8p595x0ml8q --output json --node https://babylon-testnet-rpc.polkachu.com:443 | jq .balances[])
@@ -17,7 +18,7 @@ do
                 TOKEN="$(echo "$line" | cut -d ' ' -f2)"
                 wallet="$(echo "$line" | cut -d ' ' -f3)"
                 date --utc -d "+3 hours"
-                curl -sL https://discord.com/api/v10/channels/1075371070493831259/messages -X POST -H "Content-Type: application/json" -H "Authorization: $TOKEN" -d '{"content": "!faucet '"$wallet"'"}'
+                curl -sL https://discord.com/api/v10/channels/1075371070493831259/messages -x ${arr[$((0 + $RANDOM % 400))]} -X POST -H "Content-Type: application/json" -H "Authorization: $TOKEN" -d '{"content": "!faucet '"$wallet"'"}'
                 sleep 4
             done < "$invento"
             end_time=$(date +%s)
