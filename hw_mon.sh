@@ -9,7 +9,7 @@ INFO_ALARM1="Critical Parametr!"
 IP=$(ip route get 8.8.8.8 | sed -n '/src/{s/.*src *\([^ ]*\).*/\1/p;q}')
 
 MAX_CPU_PERC=99
-MAX_DISK_PERC=99
+MAX_DISK_PERC=100
 MAX_RAM_PERC=98
 MAX_SWAP_PERC=98
 MAX_RAMDISK_PERC=98
