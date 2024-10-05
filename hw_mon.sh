@@ -13,7 +13,7 @@ MAX_DISK_PERC=100
 MAX_RAM_PERC=98
 MAX_SWAP_PERC=98
 MAX_RAMDISK_PERC=98
-MON_PROC="xmrig kdevtmpfsi kinsing dbused"
+MON_PROC="xmrig kdevtmpfsi kinsing dbused perfcc"
 
 export LC_NUMERIC="en_US.UTF-8"
 CPU=$(grep 'cpu ' /proc/stat | awk '{usage=($2+$4)*100/($2+$4+$5)} END {print usage}')
